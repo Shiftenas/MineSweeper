@@ -1,5 +1,7 @@
 .idea
+__pycache__
 
 venv/Lib
 venv/Scripts
 venv/Include
+venv/pyvenv.cfg
