@@ -9,4 +9,4 @@ if __name__ == '__main__':
     # Hard : 29 20 102
     # Insane : 38 26 194
 
-    gamegrid = GameGrid()
+    gamegrid = GameGrid("insane")
