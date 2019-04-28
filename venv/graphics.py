@@ -4,7 +4,7 @@ src = "./data/pic/"
 
 bombnearby = []
 for i in range(1,9) :
-    bombnearby.append(i+"_bomb_nearby.png")
+    bombnearby.append(str(i)+"_bomb_nearby.png")
 flagged = "flag.png"
 basic = "not_pressed.png"
 pressed = "pressed.png"
@@ -18,56 +18,48 @@ class GameGrid(Tk.Frame):
         self.game = game.MineSweeper()
         self.grid()
         self.master.title('Mine Sweeper')
-
         self.grid_cells = []
+        self.GRID_WIDTH = len(self.game.grid.numbers) * 30
+        self.GRID_HEIGHT = len(self.game.grid.numbers[0]) * 30
         self.init_grid()
         self.init_matrix()
-        self.update_grid_cells()
+        #self.update_grid_cells()
 
         self.mainloop()
 
     def init_grid(self):
-        background = Frame(self, bg=c.BACKGROUND_COLOR_GAME,
-                           width=len(self.game.grid), height=len(self.game.grid[0]))
+        background = Tk.Frame(self, width=self.GRID_WIDTH, height=self.GRID_HEIGHT, bg="#000000")
         background.grid()
-        """
-        for i in range(c.GRID_LEN):
+        basic_image = Tk.PhotoImage(src+basic)
+        for i in range(self.GRID_WIDTH):
             grid_row = []
-            for j in range(c.GRID_LEN):
-                cell = Frame(background, bg=c.BACKGROUND_COLOR_CELL_EMPTY,
-                             width=c.SIZE / c.GRID_LEN,
-                             height=c.SIZE / c.GRID_LEN)
-                cell.grid(row=i, column=j, padx=c.GRID_PADDING,
-                          pady=c.GRID_PADDING)
-                t = Label(master=cell, text="",
-                          bg=c.BACKGROUND_COLOR_CELL_EMPTY,
-                          justify=CENTER, font=c.FONT, width=5, height=2)
+            for j in range(self.GRID_HEIGHT):
+                cell = Tk.Frame(background, bg="#888888",
+                             width=30,
+                             height=30)
+                cell.grid(row=i, column=j, padx=0,pady=0)
+                t = Tk.Label(master=cell, text="",image=basic_image)
                 t.grid()
                 grid_row.append(t)
 
             self.grid_cells.append(grid_row)
-        """
+
 
     def init_matrix(self):
         self.matrix = self.game.grid
         self.history_matrixs = list()
-
+"""
     def update_grid_cells(self):
-        for i in range(c.GRID_LEN):
-            for j in range(c.GRID_LEN):
+        for i in range(self.GRID_WIDTH):
+            for j in range(self.GRID_HEIGHT):
                 new_number = self.matrix[i][j]
                 if new_number == 0:
                     self.grid_cells[i][j].configure(
-                        text="", bg=c.BACKGROUND_COLOR_CELL_EMPTY)
+                        text="", )
                 else:
                     self.grid_cells[i][j].configure(text=str(
-                        new_number), bg=c.BACKGROUND_COLOR_DICT[new_number],
-                        fg=c.CELL_COLOR_DICT[new_number])
+                        new_number))
         self.update_idletasks()
-
-
-
-
-gamegrid = GameGrid()
+"""
 
 

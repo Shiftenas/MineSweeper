@@ -1,4 +1,4 @@
-from game import MineSweeper
+from graphics import *
 import init
 
 
@@ -8,7 +8,7 @@ if __name__ == '__main__':
     # Medium : 20 14 39
     # Hard : 29 20 102
     # Insane : 38 26 194
-
+    """
     game = MineSweeper()
 
     for i in game.grid.mine :
@@ -23,3 +23,5 @@ if __name__ == '__main__':
         for j in i :
             print(j, end=" ")
         print()
+    """
+    gamegrid = GameGrid()
